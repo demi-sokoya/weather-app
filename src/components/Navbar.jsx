@@ -14,7 +14,7 @@ const Navbar = () => {
 					<Slider />
 					<SearchBar />
 					<button onClick={useCurrentLocation}>
-						<MdOutlineMyLocation />
+						<MdOutlineMyLocation size={36} />
 					</button>
 				</HStack>
 			</Box>
