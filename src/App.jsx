@@ -1,12 +1,31 @@
-import { useState } from "react";
-import "./App.css";
+import { useEffect } from "react";
+import { useTemp } from "./context/TempContext";
+import SearchBar from "./components/SearchBar";
 
 function App() {
-	const [count, setCount] = useState(0);
+	const {
+		unit,
+		toggleUnit,
+		convert,
+		tempC,
+		loading,
+		error,
+		useCurrentLocation,
+	} = useTemp();
 
 	return (
 		<>
-			<p>Hello World</p>
+			<SearchBar />
+			<button onClick={useCurrentLocation}>Use my Location</button>
+			<p>Hello</p>
+			{loading && <p>Loading...</p>}
+			{error && <p>Error; {error}</p>}
+			{tempC !== null && !loading && (
+				<p>
+					{convert(tempC)}° {unit}
+				</p>
+			)}
+			<button onClick={toggleUnit}>Toggle Unit</button>
 		</>
 	);
 }
