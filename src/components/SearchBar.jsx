@@ -59,7 +59,7 @@ const SearchBar = () => {
 							{result.name}
 
 							<span style={{ marginLeft: "6px" }}>
-								{/* {result.state ? `${result.state}, ` : ""} */}
+								{result.state ? `${result.state}, ` : ""}
 								{result.country}
 							</span>
 						</li>

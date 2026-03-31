@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTemp } from "./context/TempContext";
 import SearchBar from "./components/SearchBar";
+import Slider from "./components/Slider";
 
 function App() {
 	const {
@@ -16,8 +17,8 @@ function App() {
 	return (
 		<>
 			<SearchBar />
+			<Slider />
 			<button onClick={useCurrentLocation}>Use my Location</button>
-			<p>Hello</p>
 			{loading && <p>Loading...</p>}
 			{error && <p>Error; {error}</p>}
 			{tempC !== null && !loading && (
