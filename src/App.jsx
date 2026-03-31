@@ -2,23 +2,14 @@ import { useEffect } from "react";
 import { useTemp } from "./context/TempContext";
 import SearchBar from "./components/SearchBar";
 import Slider from "./components/Slider";
+import Navbar from "./components/NavBar";
 
 function App() {
-	const {
-		unit,
-		toggleUnit,
-		convert,
-		tempC,
-		loading,
-		error,
-		useCurrentLocation,
-	} = useTemp();
+	const { unit, convert, tempC, loading, error } = useTemp();
 
 	return (
 		<>
-			<SearchBar />
-			<Slider />
-			<button onClick={useCurrentLocation}>Use my Location</button>
+			<Navbar />
 			{loading && <p>Loading...</p>}
 			{error && <p>Error; {error}</p>}
 			{tempC !== null && !loading && (
@@ -26,7 +17,6 @@ function App() {
 					{convert(tempC)}° {unit}
 				</p>
 			)}
-			<button onClick={toggleUnit}>Toggle Unit</button>
 		</>
 	);
 }
