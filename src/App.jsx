@@ -4,11 +4,19 @@ import Navbar from "./components/NavBar";
 import CurrentWeather from "./components/CurrentWeather";
 
 function App() {
-	const { unit, convert, weather, location, loading, error } = useTemp();
+	const {
+		unit,
+		convert,
+		weather,
+		useCurrentLocation,
+		location,
+		loading,
+		error,
+	} = useTemp();
 
-	// useEffect(() => {
-	// 	useCurrentLocation();
-	// }, []);
+	useEffect(() => {
+		useCurrentLocation();
+	}, []);
 
 	console.log(weather);
 
