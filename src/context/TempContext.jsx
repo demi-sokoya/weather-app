@@ -3,9 +3,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 const TempContext = createContext(null);
 
 export const TempProvider = ({ children }) => {
-	const [tempC, setTempC] = useState(null);
 	const [unit, setUnit] = useState("C");
-	const [coords, setCoords] = useState(null);
+	const [location, setLocation] = useState({
+		cityName: "",
+		countryName: "",
+		coords: { lat: null, lon: null },
+	});
+	const [weather, setWeather] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -22,7 +26,10 @@ export const TempProvider = ({ children }) => {
 		setLoading(true);
 		navigator.geolocation.getCurrentPosition(
 			({ coords: { latitude, longitude } }) => {
-				setCoords({ lat: latitude, lon: longitude });
+				setLocation((location) => ({
+					...location,
+					coords: { lat: latitude, lon: longitude },
+				}));
 			},
 			() => {
 				setLoading(false);
@@ -32,21 +39,21 @@ export const TempProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		if (!coords) return;
+		if (!location.coords.lat || !location.coords.lon) return;
 		setLoading(true);
 		setError(null);
 
 		fetch(
-			`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${import.meta.env.VITE_WEATHER_KEY}`,
+			`https://api.openweathermap.org/data/3.0/onecall?lat=${location.coords.lat}&lon=${location.coords.lon}&units=metric&appid=${import.meta.env.VITE_WEATHER_KEY}`,
 		)
 			.then((res) => {
 				if (!res.ok) throw new Error("Weather not found");
 				return res.json();
 			})
-			.then((data) => setTempC(data.main.temp))
+			.then((data) => setWeather(data))
 			.catch((err) => setError(err.message))
 			.finally(() => setLoading(false));
-	}, [coords]);
+	}, [location]);
 
 	return (
 		<TempContext.Provider
@@ -54,9 +61,9 @@ export const TempProvider = ({ children }) => {
 				unit,
 				toggleUnit,
 				convert,
-				tempC,
-				coords,
-				setCoords,
+				weather,
+				location,
+				setLocation,
 				useCurrentLocation,
 				loading,
 				error,

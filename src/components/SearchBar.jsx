@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTemp } from "../context/TempContext";
 
 const SearchBar = () => {
-	const { setCoords } = useTemp();
+	const { setLocation } = useTemp();
 	const [input, setInput] = useState("");
 	const [results, setResults] = useState([]);
 	const [searching, setSearching] = useState(false);
@@ -37,7 +37,11 @@ const SearchBar = () => {
 	}, [input]);
 
 	const handleSelect = (result) => {
-		setCoords({ lat: result.lat, lon: result.lon });
+		setLocation(() => ({
+			countryName: result.country,
+			cityName: result.name,
+			coords: { lat: result.lat, lon: result.lon },
+		}));
 		setInput(result.name);
 		setResults([]);
 	};

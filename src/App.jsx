@@ -1,22 +1,28 @@
 import { useEffect } from "react";
 import { useTemp } from "./context/TempContext";
-import SearchBar from "./components/SearchBar";
-import Slider from "./components/Slider";
 import Navbar from "./components/NavBar";
 
 function App() {
-	const { unit, convert, tempC, loading, error } = useTemp();
+	const { unit, convert, weather, location, loading, error } = useTemp();
+
+	// useEffect(() => {
+	// 	useCurrentLocation();
+	// }, []);
+
+	console.log(weather);
 
 	return (
 		<>
 			<Navbar />
 			{loading && <p>Loading...</p>}
 			{error && <p>Error; {error}</p>}
-			{tempC !== null && !loading && (
+			{weather !== null && !loading && (
 				<p>
-					{convert(tempC)}° {unit}
+					{convert(weather.current.temp)}° {unit}
 				</p>
 			)}
+			<p>{location.cityName}</p>
+			<p>{location.countryName}</p>
 		</>
 	);
 }
