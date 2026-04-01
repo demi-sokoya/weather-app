@@ -7,7 +7,7 @@ const WeatherIcon = ({ code, size = 64 }) => {
 			src={Icon}
 			width={size}
 			height={size}
-			//   style={{ filter: "var(--icon-tint)" }}
+			style={{ filter: "var(--icon-tint)" }}
 		/>
 	);
 };

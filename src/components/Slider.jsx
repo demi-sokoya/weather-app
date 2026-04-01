@@ -1,3 +1,5 @@
+"use client";
+
 import { Icon, Switch } from "@chakra-ui/react";
 import { TbTemperatureCelsius, TbTemperatureFahrenheit } from "react-icons/tb";
 import { useTemp } from "../context/TempContext";

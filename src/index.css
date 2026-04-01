@@ -8,3 +8,14 @@ body {
 	font-family: sans-serif;
 	padding: 2rem 8rem;
 }
+
+:root,
+[data-theme="light"] {
+	--icon-tint: brightness(0) saturate(100%) invert(35%) sepia(15%)
+		saturate(600%) hue-rotate(162deg) brightness(85%) contrast(90%);
+}
+
+[data-theme="dark"] {
+	--icon-tint: brightness(0) saturate(100%) invert(85%) sepia(5%) saturate(300%)
+		hue-rotate(162deg) brightness(110%) contrast(90%);
+}
