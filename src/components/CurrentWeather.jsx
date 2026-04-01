@@ -1,5 +1,6 @@
 import { useTemp } from "../context/TempContext";
 import { HStack, VStack, Box, Text, Image } from "@chakra-ui/react";
+import WeatherIcon from "./WeatherIcon";
 
 const CurrentWeather = () => {
 	const { weather, convert, location } = useTemp();
@@ -7,6 +8,7 @@ const CurrentWeather = () => {
 	if (!weather) return null;
 
 	const { current } = weather;
+
 	return (
 		<Box>
 			{/* Outermost Box */}
@@ -47,7 +49,7 @@ const CurrentWeather = () => {
 
 				{/* Right Side */}
 				<VStack>
-					<Image></Image>
+					<WeatherIcon code={current.weather[0].icon} size={96} />
 					<Text textTransform="capitalize">
 						{current.weather[0].description}
 					</Text>
