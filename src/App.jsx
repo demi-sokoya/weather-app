@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTemp } from "./context/TempContext";
 import Navbar from "./components/NavBar";
+import CurrentWeather from "./components/CurrentWeather";
 
 function App() {
 	const { unit, convert, weather, location, loading, error } = useTemp();
@@ -14,6 +15,7 @@ function App() {
 	return (
 		<>
 			<Navbar />
+			<CurrentWeather />
 			{loading && <p>Loading...</p>}
 			{error && <p>Error; {error}</p>}
 			{weather !== null && !loading && (
