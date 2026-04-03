@@ -7,28 +7,102 @@
 body {
 	font-family: sans-serif;
 	padding: 2rem 8rem;
+	min-height: 100vh;
 }
 
 :root {
-	--font-display: "Manrope", system-ui, sans-serif;
-	--font-data: "Space Grotesk", monospace, sans-serif;
+	/* Typography Variables */
+	--weather-font-display: "Manrope", system-ui, sans-serif;
+	--weather-font-data: "Space Grotesk", monospace, sans-serif;
+
+	--weather-text-label-sm-size: 0.625rem;
+	--weather-text-label-md-size: 0.75rem;
+	--weather-text-label-size: 0.875rem;
 }
 
 :root,
 [data-theme="light"] {
 	--icon-tint: brightness(0) saturate(100%) invert(35%) sepia(15%)
 		saturate(600%) hue-rotate(162deg) brightness(85%) contrast(90%);
-	--text-primary: #1e2a2f;
-	--text-secondary: #8a8b8c;
+	--weather-text-primary: #313334;
+	--weather-text-secondary: #8a8b8c;
 	--hero-background: #e8e6e5;
 	background-color: #f0eeed;
+	--weather-stat-label: #5e5f60;
+	--weather-stat-unit: #5e5f60;
 }
 
 [data-theme="dark"] {
 	--icon-tint: brightness(0) saturate(100%) invert(85%) sepia(5%) saturate(300%)
 		hue-rotate(162deg) brightness(110%) contrast(90%);
-	--text-primary: #e8ecee;
-	--text-secondary: #8a9296;
+	--weather-text-primary: #cbcdce;
+	--weather-text-secondary: #8a9296;
 	--hero-background: #1f2324;
 	background-color: #181a1b;
+	--weather-stat-label: #a1b0b5;
+	--weather-stat-unit: #a1b0b5;
+}
+
+.weather-hero {
+	background-color: var(--hero-background);
+	border-radius: 14px;
+	padding: 18px 20px 16px;
+}
+
+.weather-city-label {
+	font-family: var(--weather-font-display);
+	font-size: var(--weather-text-label-md-size);
+	font-weight: 500;
+	color: var(--weather-text-secondary);
+}
+
+.weather-temp-hero {
+	font-family: var(--weather-font-display);
+	font-size: 3.25rem;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--weather-text-primary);
+}
+
+.weather-temp-high {
+	font-family: var(--weather-font-display);
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--weather-text-primary);
+}
+
+.weather-temp-low {
+	font-family: var(--weather-font-data);
+	font-size: var(--weather-text-label-md-size);
+	font-weight: 400;
+	color: var(--weather-text-secondary);
+}
+
+.weather-stat-label {
+	font-family: var(--weather-font-data);
+	font-size: var(--weather-text-label-size);
+	font-weight: 500;
+	letter-spacing: 0.03em;
+	color: var(--weather-stat-label);
+	margin-bottom: 2px;
+}
+
+.weather-stat-value {
+	font-family: var(--weather-font-data);
+	font-size: var(--weather-text-label-size);
+	font-weight: 500;
+	color: var(--weather-text-primary);
+}
+
+.weather-stat-unit {
+	font-family: var(--weather-font-data);
+	font-size: var(--weather-text-label-sm-size);
+	color: var(--weather-stat-unit);
+}
+
+.weather-hero-condition {
+	font-family: var(--weather-font-display);
+	font-size: var(--weather-text-label-md-size);
+	text-transform: capitalize;
+	color: var(--weather-text-primary);
 }

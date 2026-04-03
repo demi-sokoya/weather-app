@@ -10,49 +10,55 @@ const CurrentWeather = () => {
 	const { current } = weather;
 
 	return (
-		<Box fontFamily="var(--font-display)" background="var(--hero-background)">
+		<Box className="weather-hero">
 			{/* Outermost Box */}
 			<HStack justifyContent="space-between">
 				{/* Left Box */}
-				<VStack alignItems="flex-start">
-					<Text color="var(--text-secondary)">{location.cityName}</Text>
+				<VStack alignItems="flex-start" gap={4}>
+					<Text className="weather-city-label">{location.cityName}</Text>
 					{/* Temperature Box */}
-					<VStack>
-						<Text>{convert(current.temp)}°</Text>
+					<VStack alignItems="flex-start">
+						<Text className="weather-temp-hero">{convert(current.temp)}°</Text>
 						<HStack>
 							{/* High */}
-							<Text>{convert(weather.daily[0].temp.max)}°</Text>
+							<Text className="weather-temp-high">
+								{convert(weather.daily[0].temp.max)}°
+							</Text>
 							{/* Low */}
-							<Text fontFamily="var(--font-data)">
+							<Text className="weather-temp-low">
 								{convert(weather.daily[0].temp.min)}°
 							</Text>
 						</HStack>
 					</VStack>
 
 					{/* Stat Block */}
-					<HStack fontFamily="var(--font-data)">
+					<HStack gap={10}>
 						<HStack>
-							<Text color="var(--text-secondary)">Feels Like:</Text>
-							<Text>{convert(current.feels_like)}°</Text>
+							<Text className="weather-stat-label">Feels Like:</Text>
+							<Text className="weather-stat-value">
+								{convert(current.feels_like)}°
+							</Text>
 						</HStack>
 						<HStack>
-							<Text color="var(--text-secondary)">Humidity:</Text>
-							<Text>{current.humidity}%</Text>
+							<Text className="weather-stat-label">Humidity:</Text>
+							<Text className="weather-stat-value">{current.humidity}%</Text>
 						</HStack>
 						<HStack gap={1}>
-							<Text color="var(--text-secondary)">Wind:</Text>
+							<Text className="weather-stat-label">Wind:</Text>
 							<HStack gap={1}>
-								<Text>{Math.round(current.wind_speed * 3.6)}</Text>
-								<Text fontSize={12}>KM/H</Text>
+								<Text className="weather-stat-value">
+									{Math.round(current.wind_speed * 3.6)}
+								</Text>
+								<Text className="weather-stat-unit">KM/H</Text>
 							</HStack>
 						</HStack>
 					</HStack>
 				</VStack>
 
 				{/* Right Side */}
-				<VStack>
+				<VStack gap={0}>
 					<WeatherIcon code={current.weather[0].icon} size={64} />
-					<Text textTransform="capitalize">
+					<Text className="weather-hero-condition">
 						{current.weather[0].description}
 					</Text>
 				</VStack>
