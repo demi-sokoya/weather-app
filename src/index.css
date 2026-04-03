@@ -9,13 +9,26 @@ body {
 	padding: 2rem 8rem;
 }
 
+:root {
+	--font-display: "Manrope", system-ui, sans-serif;
+	--font-data: "Space Grotesk", monospace, sans-serif;
+}
+
 :root,
 [data-theme="light"] {
 	--icon-tint: brightness(0) saturate(100%) invert(35%) sepia(15%)
 		saturate(600%) hue-rotate(162deg) brightness(85%) contrast(90%);
+	--text-primary: #1e2a2f;
+	--text-secondary: #8a8b8c;
+	--hero-background: #e8e6e5;
+	background-color: #f0eeed;
 }
 
 [data-theme="dark"] {
 	--icon-tint: brightness(0) saturate(100%) invert(85%) sepia(5%) saturate(300%)
 		hue-rotate(162deg) brightness(110%) contrast(90%);
+	--text-primary: #e8ecee;
+	--text-secondary: #8a9296;
+	--hero-background: #1f2324;
+	background-color: #181a1b;
 }

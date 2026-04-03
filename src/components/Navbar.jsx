@@ -2,7 +2,7 @@ import SearchBar from "./SearchBar";
 import Slider from "./Slider";
 import { MdOutlineMyLocation } from "react-icons/md";
 import { useTemp } from "../context/TempContext";
-import { HStack, Box } from "@chakra-ui/react";
+import { HStack, Box, IconButton } from "@chakra-ui/react";
 import { ColorModeButton } from "./ui/color-mode";
 
 const Navbar = () => {
@@ -15,9 +15,12 @@ const Navbar = () => {
 					<Slider />
 					<HStack>
 						<SearchBar />
-						<button onClick={useCurrentLocation}>
+						<IconButton
+							onClick={useCurrentLocation}
+							rounded="full"
+							variant="subtle">
 							<MdOutlineMyLocation size={36} />
-						</button>
+						</IconButton>
 					</HStack>
 					<ColorModeButton />
 				</HStack>

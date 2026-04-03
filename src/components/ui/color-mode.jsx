@@ -9,7 +9,7 @@ import { LuMoon, LuSun } from "react-icons/lu";
 export function ColorModeProvider(props) {
 	return (
 		<ThemeProvider
-			attribute="class"
+			attribute="data-theme"
 			disableTransitionOnChange
 			defaultTheme="light"
 			{...props}
@@ -47,7 +47,8 @@ export const ColorModeButton = React.forwardRef(
 			<ClientOnly fallback={<Skeleton boxSize="9" />}>
 				<IconButton
 					onClick={toggleColorMode}
-					variant="ghost"
+					variant="subtle"
+					rounded="full"
 					aria-label="Toggle color mode"
 					size="sm"
 					ref={ref}
