@@ -8,13 +8,14 @@ const HourlyForecast = () => {
 
 	if (!weather) return null;
 
-	const hours = weather.hourly.slice(0, 10);
+	const hours = weather.hourly.slice(0, 24);
 
 	return (
 		<Box>
-			<HStack>
+			<Text className="weather-section-heading">Hourly Forecast</Text>
+			<HStack className="weather-hourly-container">
 				{hours.map((hour, index) => (
-					<VStack key={hour.dt ?? index}>
+					<VStack className="weather-hourly-card" key={hour.dt ?? index}>
 						<Text className="weather-hourly-time">
 							{index === 0 ? "NOW" : formatHour(hour.dt)}
 						</Text>

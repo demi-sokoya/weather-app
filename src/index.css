@@ -112,6 +112,32 @@ body {
 	color: var(--weather-text-primary);
 }
 
+.weather-section-heading {
+	font-family: var(--weather-font-display);
+	font-size: var(--weather-text-label-size);
+	font-weight: var(--medium);
+	color: var(--weather-text-primary);
+	margin-bottom: 12px;
+}
+
+.weather-hourly-container {
+	justify-content: space-between;
+	overflow-x: auto;
+	gap: 1rem;
+	padding-bottom: 0.5rem;
+	scrollbar-width: none;
+}
+
+.weather-hourly-container::-webkit-scrollbar {
+	display: none;
+}
+.weather-hourly-card {
+	background: var(--hero-background);
+	min-width: 70px;
+	border-radius: 12px;
+	padding: 10px 20px;
+}
+
 .weather-hourly-time {
 	font-family: var(--weather-font-data);
 	font-size: var(--weather-text-label-sm-size);
