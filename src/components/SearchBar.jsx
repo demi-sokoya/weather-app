@@ -55,6 +55,7 @@ const SearchBar = () => {
 				onChange={(e) => setInput(e.target.value)}
 				placeholder="Search for a location..."
 			/>
+			{searching && <p>Searching...</p>}
 			{results.length > 0 && (
 				<ul className="search-results">
 					{results.map((result) => (
