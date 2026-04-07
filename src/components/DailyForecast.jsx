@@ -4,7 +4,27 @@ import { formatDay } from "../utils/time";
 import { Box, HStack, VStack, Text } from "@chakra-ui/react";
 
 const DailyForecast = () => {
-	const { weather, convert, unit } = useTemp();
+	const { weather, convert, loading } = useTemp();
+
+	if (loading)
+		return (
+			<Box>
+				<Box className="shimmer" w="100px" h="14px" mb={3} />
+				<HStack className="weather-daily-container">
+					{Array.from({ length: 7 }).map((_, i) => (
+						<VStack key={i} className="weather-daily-card" gap={3}>
+							<Box className="shimmer" w="50px" h="14px" mt={2} />
+							<Box className="shimmer" w="64px" h="64px" borderRadius="full" />
+							<Box className="shimmer" w="70px" h="12px" />
+							<HStack gap={2} pb={2}>
+								<Box className="shimmer" w="28px" h="14px" />
+								<Box className="shimmer" w="28px" h="14px" />
+							</HStack>
+						</VStack>
+					))}
+				</HStack>
+			</Box>
+		);
 
 	if (!weather) return null;
 

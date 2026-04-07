@@ -4,7 +4,23 @@ import { formatHour } from "../utils/time";
 import { Box, HStack, VStack, Text } from "@chakra-ui/react";
 
 const HourlyForecast = () => {
-	const { weather, convert, unit } = useTemp();
+	const { weather, convert, loading } = useTemp();
+
+	if (loading)
+		return (
+			<Box>
+				<Box className="shimmer" w="120px" h="14px" mb={3} />
+				<HStack className="weather-hourly-container" gap={4}>
+					{Array.from({ length: 8 }).map((_, i) => (
+						<VStack key={i} className="weather-hourly-card" gap={2}>
+							<Box className="shimmer" w="30px" h="10px" />
+							<Box className="shimmer" w="36px" h="36px" borderRadius="full" />
+							<Box className="shimmer" w="28px" h="14px" />
+						</VStack>
+					))}
+				</HStack>
+			</Box>
+		);
 
 	if (!weather) return null;
 
