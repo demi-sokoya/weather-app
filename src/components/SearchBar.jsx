@@ -83,11 +83,12 @@ const SearchBar = () => {
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
 				placeholder="Search for a location..."
+				id="Search"
 			/>
 			{searching && (
-				<ul>
-					<li>
-						<Spinner></Spinner>
+				<ul className="search-results">
+					<li className="search-result-item search-result-loading">
+						<Spinner size="sm" />
 					</li>
 				</ul>
 			)}
@@ -98,25 +99,35 @@ const SearchBar = () => {
 						<li
 							key={`${result.lat}-${result.lon}`}
 							onClick={() => handleSelect(result)}>
-							<HStack>
+							<HStack className="search-result-item">
 								{/* Left Side */}
 								<HStack>
-									<MdLocationPin />
-									<VStack>
-										<Text>
+									<MdLocationPin className="search-result-pin" />
+									<VStack
+										className="search-result-labels"
+										alignItems="flex-start">
+										<Text className="search-result-city">
 											{result.name}, {result.country}
 										</Text>
-										<Text>{result.description}</Text>
+										<Text className="search-result-condition">
+											{result.description}
+										</Text>
 									</VStack>
 								</HStack>
 
 								{/* Right Side */}
-								<HStack>
+								<HStack className="search-result-right">
 									<WeatherIcon code={result.icon} size={28} />
-									<Text>{convert(result.temp)}°</Text>
+									<Text className="search-result-temp">
+										{convert(result.temp)}°
+									</Text>
 									<VStack>
-										<Text>{convert(result.tempMax)}°</Text>
-										<Text>{convert(result.tempMin)}°</Text>
+										<Text className="search-result-high">
+											{convert(result.tempMax)}°
+										</Text>
+										<Text className="search-result-high">
+											{convert(result.tempMin)}°
+										</Text>
 									</VStack>
 								</HStack>
 							</HStack>
