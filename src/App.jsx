@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useTemp } from "./context/TempContext";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 import CurrentWeather from "./components/CurrentWeather";
 import HourlyForecast from "./components/HourlyForecast";
 import DailyForecast from "./components/DailyForecast";
