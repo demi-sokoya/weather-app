@@ -121,6 +121,7 @@ body {
 	font-family: var(--weather-font-data);
 	font-size: var(--weather-text-label-sm-size);
 	color: var(--weather-text-secondary);
+	font-weight: var(--bold);
 	white-space: nowrap;
 }
 .search-result-low {

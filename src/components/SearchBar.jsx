@@ -107,9 +107,7 @@ const SearchBar = () => {
 								{/* Left Side */}
 								<HStack>
 									<MdLocationPin className="search-result-pin" />
-									<VStack
-										className="search-result-labels"
-										alignItems="flex-start">
+									<VStack alignItems="flex-start">
 										<Text className="search-result-city">
 											{result.name}, {result.country}
 										</Text>
@@ -120,7 +118,7 @@ const SearchBar = () => {
 								</HStack>
 
 								{/* Right Side */}
-								<HStack className="search-result-right">
+								<HStack>
 									<WeatherIcon code={result.icon} size={28} />
 									<Text className="search-result-temp">
 										{convert(result.temp)}°
@@ -129,7 +127,7 @@ const SearchBar = () => {
 										<Text className="search-result-high">
 											{convert(result.tempMax)}°
 										</Text>
-										<Text className="search-result-high">
+										<Text className="search-result-low">
 											{convert(result.tempMin)}°
 										</Text>
 									</VStack>
