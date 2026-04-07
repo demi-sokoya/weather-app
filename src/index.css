@@ -6,7 +6,7 @@
 
 body {
 	font-family: sans-serif;
-	padding: 2rem 8rem;
+	padding: 2rem 24rem;
 	min-height: 100vh;
 }
 
@@ -35,6 +35,9 @@ body {
 	background-color: #f0eeed;
 	--weather-stat-label: #5e5f60;
 	--weather-stat-unit: #5e5f60;
+	--weather-input-bg: #e2e2e4;
+	--weather-input-placeholder: #8a8b8c;
+	--weather-daily-condition: #4b4a4a;
 }
 
 [data-theme="dark"] {
@@ -46,6 +49,33 @@ body {
 	background-color: #181a1b;
 	--weather-stat-label: #a1b0b5;
 	--weather-stat-unit: #a1b0b5;
+	--weather-input-bg: #242729;
+	--weather-input-placeholder: #555a5c;
+	--weather-daily-condition: #cbcdce;
+}
+
+.search-container {
+	position: relative;
+}
+
+.search-results {
+	position: absolute;
+}
+
+.weather-search {
+	background-color: var(--weather-input-bg);
+	border-radius: 9999px;
+	border: none;
+	outline: none;
+	padding: 7px 14px;
+	font-family: var(--weather-font-display);
+	font-size: 0.8125rem;
+	color: var(--weather-text-primary);
+	min-width: 24rem;
+}
+
+.weather-search::placeholder {
+	color: var(--weather-input-placeholder);
 }
 
 .weather-hero {
@@ -179,7 +209,7 @@ body {
 	font-family: var(--weather-font-display);
 	font-weight: var(--regular);
 	padding-bottom: 1.5rem;
-	color: var(--weather-text-secondary);
+	color: var(--weather-daily-condition);
 }
 
 .weather-daily-temp-container {
@@ -197,4 +227,18 @@ body {
 	font-size: var(--weather-text-label-sm-size);
 	font-weight: var(--bold);
 	color: var(--weather-text-secondary);
+}
+
+/* Tablet */
+@media (max-width: 960px) {
+	body {
+		padding: 1rem 4rem;
+	}
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+	body {
+		padding: 1rem 1rem;
+	}
 }

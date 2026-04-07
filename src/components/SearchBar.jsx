@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTemp } from "../context/TempContext";
+import { HStack, Spinner, Input, InputGroup } from "@chakra-ui/react";
 
 const SearchBar = () => {
 	const { setLocation } = useTemp();
@@ -47,15 +48,15 @@ const SearchBar = () => {
 	};
 
 	return (
-		<div>
-			<input
+		<div className="search-container">
+			<Input
+				className="weather-search"
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
-				placeholder="Search a location"
+				placeholder="Search for a location..."
 			/>
-			{searching && <p>Searching...</p>}
 			{results.length > 0 && (
-				<ul>
+				<ul className="search-results">
 					{results.map((result) => (
 						<li
 							key={`${result.lat}-${result.lon}`}
