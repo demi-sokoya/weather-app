@@ -62,6 +62,10 @@ export const TempProvider = ({ children }) => {
 				if (!res.ok) throw new Error("Weather not found");
 				return res.json();
 			})
+			.then(
+				(data) =>
+					new Promise((resolve) => setTimeout(() => resolve(data), 1000)),
+			)
 			.then((data) => setWeather(data))
 			.catch((err) => setError(err.message))
 			.finally(() => setLoading(false));
