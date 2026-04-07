@@ -18,7 +18,8 @@ const Navbar = () => {
 						<IconButton
 							onClick={useCurrentLocation}
 							rounded="full"
-							variant="subtle">
+							variant="plain"
+							style={{ backgroundColor: "var(--weather-input-bg)", color: "var(--weather-text-primary)" }}>
 							<MdOutlineMyLocation size={36} />
 						</IconButton>
 					</HStack>

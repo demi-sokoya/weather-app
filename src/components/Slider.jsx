@@ -8,16 +8,36 @@ const Slider = () => {
 	const { unit, toggleUnit } = useTemp();
 	return (
 		<Switch.Root
-			colorPalette="blue"
 			size="lg"
 			checked={unit === "F"}
-			onCheckedChange={toggleUnit}>
+			onCheckedChange={toggleUnit}
+			css={{
+				"--switch-bg": "var(--weather-input-bg)",
+				"[data-state=checked] &": {
+					"--switch-bg": "var(--weather-input-bg)",
+				},
+			}}>
 			<Switch.HiddenInput />
-			<Switch.Control>
-				<Switch.Thumb />
+			<Switch.Control
+				style={{
+					backgroundColor: "var(--weather-input-bg)",
+				}}>
+				<Switch.Thumb
+					style={{
+						backgroundColor: "var(--weather-text-secondary)",
+					}}
+				/>
 				<Switch.Indicator
-					fallback={<Icon as={TbTemperatureCelsius} color="gray.400" />}>
-					<Icon as={TbTemperatureFahrenheit} color="yellow.400" />
+					fallback={
+						<Icon
+							as={TbTemperatureCelsius}
+							style={{ color: "var(--weather-text-secondary)" }}
+						/>
+					}>
+					<Icon
+						as={TbTemperatureFahrenheit}
+						style={{ color: "var(--weather-text-primary)" }}
+					/>
 				</Switch.Indicator>
 			</Switch.Control>
 			<Switch.Label></Switch.Label>

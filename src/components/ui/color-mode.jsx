@@ -47,12 +47,13 @@ export const ColorModeButton = React.forwardRef(
 			<ClientOnly fallback={<Skeleton boxSize="9" />}>
 				<IconButton
 					onClick={toggleColorMode}
-					variant="subtle"
+					variant="plain"
 					rounded="full"
 					aria-label="Toggle color mode"
 					size="sm"
 					ref={ref}
 					{...props}
+					style={{ backgroundColor: "var(--weather-input-bg)", color: "var(--weather-text-primary)" }}
 					css={{
 						_icon: {
 							width: "5",
