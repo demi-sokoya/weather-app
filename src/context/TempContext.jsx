@@ -27,7 +27,7 @@ export const TempProvider = ({ children }) => {
 		navigator.geolocation.getCurrentPosition(
 			({ coords: { latitude, longitude } }) => {
 				fetch(
-					`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${import.meta.env.VITE_WEATHER_KEY}`,
+					`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${import.meta.env.VITE_WEATHER_KEY}`,
 				)
 					.then((res) => res.json())
 					.then((data) => {
