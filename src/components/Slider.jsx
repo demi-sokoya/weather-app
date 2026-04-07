@@ -31,7 +31,7 @@ const Slider = () => {
 					fallback={
 						<Icon
 							as={TbTemperatureCelsius}
-							style={{ color: "var(--weather-text-secondary)" }}
+							style={{ color: "var(--weather-text-primary)" }}
 						/>
 					}>
 					<Icon
