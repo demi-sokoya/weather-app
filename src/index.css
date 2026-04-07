@@ -123,7 +123,6 @@ body {
 .weather-hourly-container {
 	justify-content: space-between;
 	overflow-x: auto;
-	gap: 1rem;
 	padding-bottom: 0.5rem;
 	scrollbar-width: none;
 }

@@ -13,7 +13,7 @@ const HourlyForecast = () => {
 	return (
 		<Box>
 			<Text className="weather-section-heading">Hourly Forecast</Text>
-			<HStack className="weather-hourly-container">
+			<HStack className="weather-hourly-container" gap={4}>
 				{hours.map((hour, index) => (
 					<VStack className="weather-hourly-card" key={hour.dt ?? index}>
 						<Text className="weather-hourly-time">
