@@ -1,13 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useTemp } from "../context/TempContext";
-import {
-	HStack,
-	Spinner,
-	Input,
-	InputGroup,
-	VStack,
-	Text,
-} from "@chakra-ui/react";
+import { HStack, Spinner, Input, VStack, Text } from "@chakra-ui/react";
 import { MdLocationPin } from "react-icons/md";
 import WeatherIcon from "./WeatherIcon";
 
@@ -16,6 +9,17 @@ const SearchBar = () => {
 	const [input, setInput] = useState("");
 	const [results, setResults] = useState([]);
 	const [searching, setSearching] = useState(false);
+	const containerRef = useRef(null);
+
+	useEffect(() => {
+		const handleClickOutside = (e) => {
+			if (containerRef.current && !containerRef.current.contains(e.target)) {
+				setResults([]);
+			}
+		};
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	});
 
 	useEffect(() => {
 		if (input.length < 2) {
@@ -77,7 +81,7 @@ const SearchBar = () => {
 	};
 
 	return (
-		<div className="search-container">
+		<div className="search-container" ref={containerRef}>
 			<Input
 				className="weather-search"
 				value={input}
