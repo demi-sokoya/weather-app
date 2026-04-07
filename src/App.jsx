@@ -3,6 +3,7 @@ import { useTemp } from "./context/TempContext";
 import Navbar from "./components/NavBar";
 import CurrentWeather from "./components/CurrentWeather";
 import HourlyForecast from "./components/HourlyForecast";
+import DailyForecast from "./components/DailyForecast";
 
 function App() {
 	const {
@@ -35,6 +36,7 @@ function App() {
 			<p>{location.cityName}</p>
 			<p>{location.countryName}</p>
 			<HourlyForecast />
+			<DailyForecast />
 		</>
 	);
 }
