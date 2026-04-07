@@ -20,21 +20,12 @@ function App() {
 		useCurrentLocation();
 	}, []);
 
-	console.log(weather);
-
 	return (
 		<>
 			<Navbar />
-			<CurrentWeather />
 			{loading && <p>Loading...</p>}
 			{error && <p>Error; {error}</p>}
-			{weather !== null && !loading && (
-				<p>
-					{convert(weather.current.temp)}° {unit}
-				</p>
-			)}
-			<p>{location.cityName}</p>
-			<p>{location.countryName}</p>
+			<CurrentWeather />
 			<HourlyForecast />
 			<DailyForecast />
 		</>

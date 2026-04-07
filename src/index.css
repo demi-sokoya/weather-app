@@ -151,3 +151,50 @@ body {
 	font-weight: var(--bold);
 	color: var(--weather-text-primary);
 }
+
+.weather-daily-container {
+	justify-content: space-between;
+	padding-bottom: 0.5rem;
+}
+
+.weather-daily-card {
+	background: var(--hero-background);
+	border-radius: 16px;
+	padding: 10px 20px;
+	min-width: 140px;
+}
+
+.weather-daily-day {
+	font-size: var(--weather-text-label-size);
+	font-family: var(--weather-font-display);
+	letter-spacing: var(--weather-text-label-ls);
+	font-weight: var(--medium);
+	color: var(--weather-text-primary);
+	padding-bottom: 1.5rem;
+	padding-top: 0.5rem;
+}
+
+.weather-daily-condition {
+	font-size: var(--weather-text-label-md-size);
+	font-family: var(--weather-font-display);
+	font-weight: var(--regular);
+	padding-bottom: 1.5rem;
+	color: var(--weather-text-secondary);
+}
+
+.weather-daily-temp-container {
+	padding-bottom: 0.5rem;
+}
+
+.weather-daily-high {
+	font-family: var(--weather-font-display);
+	font-size: var(--weather-text-label-size);
+	font-weight: var(--bold);
+	color: var(--weather-text-primary);
+}
+.weather-daily-low {
+	font-family: var(--weather-font-display);
+	font-size: var(--weather-text-label-sm-size);
+	font-weight: var(--bold);
+	color: var(--weather-text-secondary);
+}

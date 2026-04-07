@@ -15,15 +15,23 @@ const DailyForecast = () => {
 			<Text className="weather-section-heading">7-Day Forecast</Text>
 			<HStack className="weather-daily-container">
 				{days.map((day, index) => (
-					<VStack key={day.dt ?? index}>
-						<Text>{index === 0 ? "Today" : formatDay(day.dt, index)}</Text>
-						<VStack>
+					<VStack className="weather-daily-card" key={day.dt ?? index}>
+						<Text className="weather-daily-day">
+							{index === 0 ? "Today" : formatDay(day.dt, index)}
+						</Text>
+						<VStack gap={0}>
 							<WeatherIcon code={day.weather[0].icon} />
-							<Text>{day.weather[0].description}</Text>
+							<Text className="weather-daily-condition">
+								{day.weather[0].main}
+							</Text>
 						</VStack>
-						<HStack>
-							<Text>{convert(day.temp.max)}°</Text>
-							<Text>{convert(day.temp.min)}°</Text>
+						<HStack className="weather-daily-temp-container">
+							<Text className="weather-daily-high">
+								{convert(day.temp.max)}°
+							</Text>
+							<Text className="weather-daily-low">
+								{convert(day.temp.min)}°
+							</Text>
 						</HStack>
 					</VStack>
 				))}
