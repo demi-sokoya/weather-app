@@ -54,6 +54,27 @@ body {
 	--weather-daily-condition: #cbcdce;
 }
 
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.shimmer {
+	background: linear-gradient(
+		90deg,
+		var(--weather-input-bg) 25%,
+		var(--hero-background) 50%,
+		var(--weather-input-bg) 75%
+	);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s ease-in-out infinite;
+	border-radius: 8px;
+}
+
 .search-container {
 	position: relative;
 }

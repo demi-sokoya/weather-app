@@ -7,15 +7,7 @@ import DailyForecast from "./components/DailyForecast";
 import { Spacer, VStack, Box } from "@chakra-ui/react";
 
 function App() {
-	const {
-		unit,
-		convert,
-		weather,
-		useCurrentLocation,
-		location,
-		loading,
-		error,
-	} = useTemp();
+	const { useCurrentLocation, loading, error } = useTemp();
 
 	useEffect(() => {
 		useCurrentLocation();
@@ -25,8 +17,7 @@ function App() {
 		<>
 			<Navbar />
 			<Box h="2rem" />
-			{loading && <p>Loading...</p>}
-			{error && <p>Error; {error}</p>}
+			{!loading && error && <p>Error: {error}</p>}
 			<CurrentWeather />
 			<Box h="2rem" />
 			<HourlyForecast />

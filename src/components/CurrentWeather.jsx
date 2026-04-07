@@ -3,7 +3,31 @@ import { HStack, VStack, Box, Text } from "@chakra-ui/react";
 import WeatherIcon from "./WeatherIcon";
 
 const CurrentWeather = () => {
-	const { weather, convert, location } = useTemp();
+	const { weather, convert, location, loading } = useTemp();
+
+	if (loading)
+		return (
+			<Box className="weather-hero">
+				<HStack justifyContent="space-between">
+					<VStack alignItems="flex-start" gap={4}>
+						<Box className="shimmer" w="80px" h="12px" />
+						<VStack alignItems="flex-start" gap={2}>
+							<Box className="shimmer" w="120px" h="52px" />
+							<Box className="shimmer" w="80px" h="14px" />
+						</VStack>
+						<HStack gap={10}>
+							<Box className="shimmer" w="100px" h="14px" />
+							<Box className="shimmer" w="100px" h="14px" />
+							<Box className="shimmer" w="100px" h="14px" />
+						</HStack>
+					</VStack>
+					<VStack gap={2} alignItems="center">
+						<Box className="shimmer" w="64px" h="64px" borderRadius="full" />
+						<Box className="shimmer" w="80px" h="12px" />
+					</VStack>
+				</HStack>
+			</Box>
+		);
 
 	if (!weather) return null;
 
