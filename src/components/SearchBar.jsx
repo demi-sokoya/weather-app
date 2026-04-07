@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { useTemp } from "../context/TempContext";
-import { HStack, Spinner, Input, InputGroup } from "@chakra-ui/react";
+import {
+	HStack,
+	Spinner,
+	Input,
+	InputGroup,
+	VStack,
+	Text,
+} from "@chakra-ui/react";
+import { MdLocationPin } from "react-icons/md";
+import WeatherIcon from "./WeatherIcon";
 
 const SearchBar = () => {
-	const { setLocation } = useTemp();
+	const { setLocation, convert } = useTemp();
 	const [input, setInput] = useState("");
 	const [results, setResults] = useState([]);
 	const [searching, setSearching] = useState(false);
@@ -28,8 +37,28 @@ const SearchBar = () => {
 								(r) => r.lat === result.lat && r.lon === result.lon,
 							),
 					);
-					setResults(unique);
+					return Promise.all(
+						unique.map((city) =>
+							fetch(
+								`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${import.meta.env.VITE_WEATHER_KEY}`,
+							)
+								.then((res) => res.json())
+								.then((w) => ({
+									name: city.name,
+									state: city.state,
+									country: city.country,
+									lat: city.lat,
+									lon: city.lon,
+									temp: w.main.temp,
+									tempMax: w.main.temp_max,
+									tempMin: w.main.temp_min,
+									icon: w.weather[0].icon,
+									description: w.weather[0].description,
+								})),
+						),
+					);
 				})
+				.then((enhanced) => setResults(enhanced))
 				.catch(() => setResults([]))
 				.finally(() => setSearching(false));
 		}, 300);
@@ -55,19 +84,42 @@ const SearchBar = () => {
 				onChange={(e) => setInput(e.target.value)}
 				placeholder="Search for a location..."
 			/>
-			{searching && <p>Searching...</p>}
-			{results.length > 0 && (
+			{searching && (
+				<ul>
+					<li>
+						<Spinner></Spinner>
+					</li>
+				</ul>
+			)}
+
+			{!searching && results.length > 0 && (
 				<ul className="search-results">
 					{results.map((result) => (
 						<li
 							key={`${result.lat}-${result.lon}`}
 							onClick={() => handleSelect(result)}>
-							{result.name}
+							<HStack>
+								{/* Left Side */}
+								<HStack>
+									<MdLocationPin />
+									<VStack>
+										<Text>
+											{result.name}, {result.country}
+										</Text>
+										<Text>{result.description}</Text>
+									</VStack>
+								</HStack>
 
-							<span style={{ marginLeft: "6px" }}>
-								{result.state ? `${result.state}, ` : ""}
-								{result.country}
-							</span>
+								{/* Right Side */}
+								<HStack>
+									<WeatherIcon code={result.icon} size={28} />
+									<Text>{convert(result.temp)}°</Text>
+									<VStack>
+										<Text>{convert(result.tempMax)}°</Text>
+										<Text>{convert(result.tempMin)}°</Text>
+									</VStack>
+								</HStack>
+							</HStack>
 						</li>
 					))}
 				</ul>
