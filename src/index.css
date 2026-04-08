@@ -334,4 +334,43 @@ body {
 	body {
 		padding: 1rem 1rem;
 	}
+
+	.weather-hourly-card {
+		padding: 8px 12px;
+		min-width: 56px;
+	}
+
+	.weather-hourly-card img,
+	.weather-hourly-card svg {
+		width: 28px !important;
+		height: 28px !important;
+	}
+	.weather-search {
+		background-color: var(--weather-input-bg);
+		border-radius: 9999px;
+		border: none;
+		outline: none;
+		padding: 7px 14px;
+		font-family: var(--weather-font-display);
+		font-size: 0.8125rem;
+		color: var(--weather-text-primary);
+		min-width: 12rem;
+	}
+
+	.weather-daily-container {
+		overflow-x: auto;
+		scrollbar-width: none;
+		scroll-snap-type: x mandatory;
+		justify-content: flex-start;
+	}
+
+	.weather-daily-container::-webkit-scrollbar {
+		display: none;
+	}
+
+	.weather-daily-card {
+		flex: 0 0 auto;
+		min-width: 90px;
+		scroll-snap-align: start;
+	}
 }
