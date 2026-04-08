@@ -241,19 +241,23 @@ body {
 }
 
 .weather-hourly-container {
-	justify-content: space-between;
 	overflow-x: auto;
 	scrollbar-width: none;
+	scroll-snap-type: x mandatory;
 }
 
 .weather-hourly-container::-webkit-scrollbar {
 	display: none;
+	user-select: none;
 }
+
 .weather-hourly-card {
 	background: var(--hero-background);
 	min-width: 70px;
+	flex: 0 0 auto;
 	border-radius: 12px;
 	padding: 10px 20px;
+	scroll-snap-align: start;
 }
 
 .weather-hourly-time {
@@ -279,8 +283,8 @@ body {
 .weather-daily-card {
 	background: var(--hero-background);
 	border-radius: 16px;
-	padding: 10px 20px;
-	min-width: 140px;
+	padding: 10px 8px;
+	flex: 1;
 }
 
 .weather-daily-day {

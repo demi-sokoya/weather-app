@@ -2,9 +2,18 @@ import { useTemp } from "../context/TempContext";
 import WeatherIcon from "./WeatherIcon";
 import { formatHour } from "../utils/time";
 import { Box, HStack, VStack, Text } from "@chakra-ui/react";
+import { useRef, useState } from "react";
 
 const HourlyForecast = () => {
 	const { weather, convert, loading } = useTemp();
+	const scrollRef = useRef(null);
+
+	const handleWheel = (e) => {
+		if (scrollRef.current) {
+			e.preventDefault();
+			scrollRef.current.scrollLeft += e.deltaY * 0.8;
+		}
+	};
 
 	if (loading)
 		return (
@@ -29,7 +38,11 @@ const HourlyForecast = () => {
 	return (
 		<Box>
 			<Text className="weather-section-heading">Hourly Forecast</Text>
-			<HStack className="weather-hourly-container" gap={4}>
+			<HStack
+				className="weather-hourly-container"
+				gap={2}
+				ref={scrollRef}
+				onWheel={handleWheel}>
 				{hours.map((hour, index) => (
 					<VStack className="weather-hourly-card" key={hour.dt ?? index}>
 						<Text className="weather-hourly-time">
