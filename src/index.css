@@ -373,4 +373,12 @@ body {
 		min-width: 90px;
 		scroll-snap-align: start;
 	}
+
+	.search-results {
+		position: fixed;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 60px;
+		width: calc(100vw - 2rem);
+	}
 }
