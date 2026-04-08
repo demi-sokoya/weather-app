@@ -109,7 +109,7 @@ const SearchBar = () => {
 									<MdLocationPin className="search-result-pin" />
 									<VStack alignItems="flex-start">
 										<Text className="search-result-city">
-											{result.name}, {result.country}
+											{result.name} {result.state}, {result.country}
 										</Text>
 										<Text className="search-result-condition">
 											{result.description}
