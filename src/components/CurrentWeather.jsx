@@ -1,9 +1,11 @@
 import { useTemp } from "../context/TempContext";
 import { HStack, VStack, Box, Text } from "@chakra-ui/react";
 import WeatherIcon from "./WeatherIcon";
+import useCityImage from "../hooks/useCityImage";
 
 const CurrentWeather = () => {
 	const { weather, convert, location, loading } = useTemp();
+	const imageUrl = useCityImage(location?.cityName ?? null);
 
 	if (loading)
 		return (
@@ -34,7 +36,18 @@ const CurrentWeather = () => {
 	const { current } = weather;
 
 	return (
-		<Box className="weather-hero">
+		<Box
+			className={`${imageUrl ? " weather-hero--has-image" : "shimmer"}`}
+			borderRadius="14px"
+			padding="18px 20px 16px"
+			backgroundColor={imageUrl ? undefined : "var(--hero-background)"}
+			backgroundImage={
+				imageUrl
+					? `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${imageUrl})`
+					: undefined
+			}
+			backgroundSize="cover"
+			backgroundPosition="center 30%">
 			<VStack alignItems="flex-start" gap={4}>
 				<HStack justifyContent="space-between" w="100%">
 					{/* Left Side */}
